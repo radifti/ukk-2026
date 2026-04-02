@@ -1,7 +1,3 @@
-<?php
-include 'db.php';
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -66,13 +62,7 @@ include 'db.php';
                     $keterangan = $_POST['keterangan'];
                     $tanggal = date('Y-m-d');
 
-                    $check_siswa = mysqli_query($conn, "SELECT * FROM siswa WHERE nis = '$nis'");
-
-                    if (mysqli_num_rows($check_siswa) == 0) {
-                        echo '<script>alert("NIS tidak terdaftar!")</script>';
-                    } else {
-
-                        $insert = mysqli_query($conn, "INSERT INTO input_aspirasi VALUES (
+                    $insert = mysqli_query($conn, "INSERT INTO input_aspirasi VALUES (
                                             null,
                                             '" . $nis . "', 
                                             '" . $kategori . "',
@@ -83,12 +73,11 @@ include 'db.php';
 
                         if ($insert) {
                             echo '<script>alert("Tambah data berhasil")</script>';
-                            echo '<script>window.location="index.php"</script>';
+                            echo '<script>window.location="input-aspirasi.php"</script>';
                         } else {
                             echo 'gagal' . mysqli_error($conn);
                         }
                     }
-                }
                 ?>
             </div>
         </div>
